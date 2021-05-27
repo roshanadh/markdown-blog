@@ -11,7 +11,7 @@ public class MdToHtmlRenderer {
 	 * Parse List of Markdown lines passed as argument, and render
 	 * corresponding HTML
 	 */
-	public static String render(List<String> markdownLines) {
+	public static String renderHtml(List<String> markdownLines) {
 		Parser parser = Parser.builder().build();
 		HtmlRenderer renderer = HtmlRenderer.builder().build();
 
