@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title th:if="${error}"> Error | Roshan Adhikari </title>
+	<title th:unless="${error}" th:text="${post.title + ' | Roshan Adhikari'}"> | Roshan Adhikari </title>
+
+	<link rel="stylesheet"
+		  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+		  crossorigin="anonymous"
+		  th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"
+	>
+</head>
+<body>
+	<div th:insert="header"></div>
+	<div class="d-flex justify-content-center" style="margin: 10px;">
+		<div th:if="${error}" class="alert alert-danger" role="alert">
+			Sorry, the post you requested doesn't exist!
+		</div>
+
+		<article th:unless="${error}">
+			<h1 th:utext="${post.title}">Title</h1>
+			<p class="card-subtitle mb-2"
+			   th:text="${#temporals.monthName(post.dateTime) + ' ' + #temporals.day(post.dateTime) + ', ' + #temporals.year(post.dateTime)}">LocalDateTime</p>
+			<p th:utext="${post.content}">Content</p>
+		</article>
+	</div>
+</body>
+</html>
